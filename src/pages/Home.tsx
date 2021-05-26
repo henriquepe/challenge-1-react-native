@@ -31,21 +31,11 @@ export function Home() {
 
   function handleMarkTaskAsDone(id: number) {
     //TODO - mark task as done if exists
-    const taskToChangeStatus = tasks.find(task => task.id === id);
-
-    const taskIndex = tasks.findIndex(task => task.id === id);
-
-    if(!taskToChangeStatus){
-      throw new Error('task does not exists')
-    }
-
-    taskToChangeStatus.done = !taskToChangeStatus.done;
-
-
-   const newTasks = tasks.splice(taskIndex, 1, taskToChangeStatus);
-
-
-    setTasks(newTasks);
+    const newTasks = tasks.map(task => {
+      if (task.id === id){
+        task.done = !task.done
+      }
+    })
   }
 
   function handleRemoveTask(id: number) {
