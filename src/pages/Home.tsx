@@ -23,7 +23,7 @@ export function Home() {
         done: false
       }
 
-      console.log(newTask.id);
+
 
       setTasks(oldState => [...oldState, newTask]);
     }
@@ -31,11 +31,22 @@ export function Home() {
 
   function handleMarkTaskAsDone(id: number) {
     //TODO - mark task as done if exists
-    const newTasks = tasks.map(task => {
-      if (task.id === id){
-        task.done = !task.done
+    let newTasks: Task[] = [];
+
+    for (let index = 0; index < tasks.length; index++) {
+      const element = tasks[index];
+
+      if(element.id === id) {
+        element.done = !element.done
       }
-    })
+
+      newTasks.push(element);
+      
+    }
+
+
+
+    setTasks(newTasks);
   }
 
   function handleRemoveTask(id: number) {

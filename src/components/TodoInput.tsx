@@ -12,7 +12,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
   const testInputRef = useRef(null)
 
   function handleAddNewTask() {
-    console.log(task);
+
     addTask(task);
     setTask('')
     //TODO - Call addTask and clean input value 
